@@ -1,0 +1,121 @@
+:root {
+  --color1: #FF0055;
+  --color2: #000066;
+  /* --color1: #ECFCFF;
+  --color2: #B2FCFF;
+  --color3: #5EDFFF;
+  --color4: #3E64FF; */
+  /* --color5: #6100FF;
+  --color6: #00FF57;
+  --color7: #FFF500; */
+}
+
+body {
+  font-family: "Montserrat", sans-serif;
+  text-align: center;
+}
+
+.bg-gradient-0 {
+  background: linear-gradient(180deg, var(--color1) 0%, var(--color2) 100%);
+}
+
+.bg-gradient-1 {
+  background:
+  linear-gradient(
+    125deg, var(--color1) 0%, var(--color1) 40%, var(--color2) calc(40% + 1px),
+    var(--color2) 60%, var(--color3) calc(60% + 1px),
+    var(--color3) 72%, var(--color4) calc(72% + 1px),
+    var(--color4) 100%
+    );
+}
+
+.bg-gradient-2 {
+  background:
+  linear-gradient(140.54deg, #608D00 0%, #D30000 72.37%),
+  linear-gradient(360deg, #0029FF 0%, #8FFF00 100%),
+  radial-gradient(
+    100% 164.72% at 100% 100%,
+    #6100FF 0%, #00FF57 100%),
+  radial-gradient(
+    100% 148.07% at 0% 0%,
+    #FFF500 0%, #51D500 100%);
+  background-blend-mode: color-dodge, overlay, difference, normal;
+  background-repeat: no-repeat;
+}
+
+/* Headings */
+
+h1 {
+  font-weight: 800;
+  font-size: 3.5rem;
+  line-height: 1.5;
+}
+
+h2 {
+  font-weight: 800;
+  font-size: 3rem;
+  line-height: 1.5;
+}
+
+h3 {
+  font-weight: 800;
+  font-size: 1.5rem;
+}
+
+p {
+  /* color: #8F8F8F; */
+  color: #FFFFFF;
+}
+
+/* Containers */
+.container-fluid {
+  padding: 7% 15%;
+}
+
+/* Sections */
+.colored-section {
+  background-color: #FF4C68;
+  color: #FFFFFF;
+}
+
+.white-section {
+  background-color: #FFFFFF;
+}
+
+/* navagation bar */
+/* .navbar {
+  padding: 0 0 4.5rem;
+}
+
+.navbar-brand {
+  font-family: "Ubuntu", sans-serif;
+  font-size: 2.5rem;
+  font-weight: bold;
+}
+
+.nav-item {
+  padding: 0 18px;
+}
+
+.nav-link {
+  font-family: "Montserrat", sans-serif;
+  font-weight: lighter;
+  font-size: 1.2rem;
+} */
+
+/* submit buttons */
+
+.submit-button {
+  margin: 5% 3% 5% 0;
+}
+
+/* Title Section */
+#title {
+  /* background-image: url(assets/background.jpg); */
+  color: #FFFFFF;
+}
+
+#title .container-fluid {
+  padding: 3% 15% 7%;
+  text-align: center;
+}

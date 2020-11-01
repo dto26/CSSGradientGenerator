@@ -1,0 +1,19 @@
+{
+  "name": "cssgradientgenerator",
+  "version": "1.0.0",
+  "description": "Generate CSS gradients from user input",
+  "main": "app.js",
+  "scripts": {
+    "test": "echo \"Error: no test specified\" && exit 1"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/dto26/CSSGradientGenerator.git"
+  },
+  "author": "Dan O'Connell",
+  "license": "ISC",
+  "bugs": {
+    "url": "https://github.com/dto26/CSSGradientGenerator/issues"
+  },
+  "homepage": "https://github.com/dto26/CSSGradientGenerator#readme"
+}
