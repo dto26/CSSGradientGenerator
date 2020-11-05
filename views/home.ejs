@@ -1,0 +1,34 @@
+<%- include('partials/header'); -%>
+
+<!-- Header -->
+<section id="title" class="bg-gradient-0 container-fluid">
+  <div class="container-fluid">
+    <h1>Generate CSS background gradients</h1>
+    <p class="title-content">Enter color codes to generate a gradient</p>
+  </div>
+  <!-- Form -->
+  <div class="container-fluid">
+    <form action="index.html" method="post">
+      <div class="form-group">
+        <!-- <label class="form-text">color 1</label> -->
+        <input type="text" id="color1" placeholder="hex code 1">
+      </div>
+      <div class="form-group">
+        <!-- <label class="form-text">color 2</label> -->
+        <input type="text" id="color2" placeholder="hex code 2">
+      </div>
+      <div class="form-group">
+        <button class="submit-btn btn btn-lg btn-outline-light" type="button" value="submit" onclick="setValue()" name="button">Generate Gradient</button>
+        <button class="image-btn btn btn-lg btn-outline-light" type="button" value="submit" onclick="setValue()" name="button">Generate Image</button>
+      </div>
+    </form>
+  </div>
+</section>
+
+
+
+
+
+
+
+<%- include('partials/footer'); -%>
