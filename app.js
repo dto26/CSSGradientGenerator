@@ -8,6 +8,8 @@ const bodyParser = require("body-parser");
 const ejs = require("ejs");
 const _ = require('lodash');
 const domtoimage = require('dom-to-image');
+const ejsLint = require('ejs-lint');
+const PORT = 3000;
 
 const app = express();
 
@@ -19,18 +21,21 @@ app.use(express.static("public"));
 /* ============================== */
 /* ==== SET GLOBAL VARIABLES ==== */
 /* ============================== */
-const homeStartingContent = "sasg";
-const aboutContent = "sasg";
-const contactContent = "sasg";
+const homeStartingContent = "temp";
+const aboutContent = "temp";
+const contactContent = "temp";
 /* ============================== */
 
 app.get("/", function (req, res) {
   res.render("home", {
     startingContent: homeStartingContent,
-    // posts: posts
   });
-
 });
+
+app.post("/", function (req, res) {
+  console.log(req.body.hexcode1);
+  console.log(req.body.hexcode2);
+})
 
 app.get("/about", function (req, res) {
   res.render("about", { aboutContent: aboutContent});
@@ -40,32 +45,6 @@ app.get("/contact", function (req, res) {
   res.render("contact", { contactContent: contactContent});
 });
 
-app.get("/compose", function (req, res) {
-  res.render("compose", {});
-});
-
-app.post("/compose", function (req, res) {
-  const post = {
-    title: req.body.postTitle,
-    content: req.body.postContent
-  };
-  posts.push(post);
-  res.redirect("/");
-})
-
-// navigate path to post name
-app.get("/posts/:postName", function (req, res) {
-  const requestedTitle = _.lowerCase(req.params.postName);
-  posts.forEach(function(post) {
-    const storedTitle = _.lowerCase(post.title);
-    if (requestedTitle === storedTitle) {
-      res.render('post', {
-        postName: post.title,
-        postContent: post.content
-      });
-    }
-  });
-});
 
 /* ===================================== */
 /* ==== CONVERT BACKGROUND TO IMAGE ==== */
@@ -89,7 +68,7 @@ app.get("/posts/:postName", function (req, res) {
 //
 // const btnGradient = document.getElementById('gradient--btn');
 // const btnImage = document.getElementById('image--btn');
-
+//
 // const addColor1 = (ev)=>{
 //   ev.preventDefault();  // Stop form from submitting
 //   let color1 = {
@@ -104,29 +83,26 @@ app.get("/posts/:postName", function (req, res) {
 // }
 //
 // // Set a variable value
-// function setValue() {
-//   let hexcode1 = document.getElementById('color1').value;
-//   let hexcode2 = document.getElementById('color2').value;
-//
-//   r.style.setProperty('--color1', hexcode1);
-//   console.warn('Color 1: ' + hexcode1);
-//
-//   r.style.setProperty('--color2', hexcode2);
-//   console.warn('Color 1: ' + hexcode2);
-// }
+function setValue() {
+  // let hexcode1 = document.getElementById('color1').value;
+  // let hexcode2 = document.getElementById('color2').value;
+  //
+  // r.style.setProperty('--color1', hexcode1);
+  // console.warn('Color 1: ' + hexcode1);
+  //
+  // r.style.setProperty('--color2', hexcode2);
+  // console.warn('Color 1: ' + hexcode2);
+}
 
 // Listen to submit button
 // document.addEventListener('DOMContentLoaded', function () {
 //   document.getElementById('submit-btn').addEventListener('click', setValue);
 // });
 
-
-
-
-
 /* =================================== */
 /* ==== LISTEN TO LOCAL HOST 3000 ==== */
 /* =================================== */
-app.listen(3000, function() {
-  console.log("Server started on port 3000");
+app.listen(PORT, function(error) {
+  if (error) throw error;
+  console.log(`Server started on Port: ${PORT}`);
 });
