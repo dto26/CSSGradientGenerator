@@ -6,9 +6,16 @@
     <h1>Generate CSS background gradients</h1>
     <p class="title-content">Enter color codes to generate a gradient</p>
   </div>
+
   <!-- Form -->
   <div class="container-fluid">
-    <form action="index.html" method="post">
+  
+    <!--
+      Since your route is at '/' and not '/index.html', this form will fail if you
+      put 'index.html'. It's not like Apache which automatically routes '/' to 
+      'index.html'.
+    -->
+    <form action="/" method="post">
       <div class="form-group">
         <!-- <label class="form-text">color 1</label> -->
         <input type="text" id="color--1" name="hexcode1" placeholder="hex code 1">
@@ -17,9 +24,35 @@
         <!-- <label class="form-text">color 2</label> -->
         <input type="text" id="color--2" name="hexcode2" placeholder="hex code 2">
       </div>
+
+      <!-- 
+        I would just have one submit button and a select field 
+        which determines the type of generation you want (image or
+        gradient). This is actually easier to parse on the server end.
+        However, if it's necessary, it is possible, although more 
+        complicated, to do two submit buttons.
+       -->
       <div class="form-group">
-        <button class="submit-btn btn btn-lg btn-outline-light" type="button" value="submit" onclick="<%= setValue() %>" name="button">Generate Gradient</button>
-        <button class="image-btn btn btn-lg btn-outline-light" type="button" value="submit" onclick="<%= setValue() %>" name="button">Generate Image</button>
+        <select name="generate" id="generate-system">
+          <option value="" selected disabled>Generate...</option>
+          <option value="gradient">Gradient</option>
+          <option value="image">Image</option>
+        </select>
+      </div>
+      
+      
+      <div class="form-group">
+        <!-- 
+          So to get a form to actually submit anything, you use a special HTML element. It is
+          a button with the attribute "type" set to "submit" (as I have done here).
+         -->
+        <button class="submit-btn btn btn-lg btn-outline-light" type='submit'>Generate</button>
+
+        <!-- I've commented out these buttons, see above -->
+        <!--
+          <button class="submit-btn btn btn-lg btn-outline-light">Generate Gradient</button>
+          <button class="image-btn btn btn-lg btn-outline-light">Generate Image</button>
+        -->
       </div>
     </form>
   </div>
@@ -27,4 +60,29 @@
 
 <%- include('partials/footer'); -%>
 
-<% function setValue() { console.log('button clicked')} %>
+<!--
+Don't know what this is... I assume when you wrote this and
+<button onclick="<% setValue() %>">, you expected this to be 
+defined in the site's javascript and "setValue()" to be written 
+as is, but this defines the function in the ejs templating engine,
+and when you do <% setValue() %>, it calls the function and puts
+the result into the template at that spot... which in this case is 
+nothing.
+
+If you want to define it in the site's page you use a script tag and
+then just put the function call as a string in "onclick" like so
+
+<script>
+  function setValue() {
+    console.log('button clicked')
+  }
+</script>
+
+<button onclick="setValue()">
+
+I commented it out for now.
+-->
+
+<!-- 
+<% function setValue() { console.log('button clicked')} %> 
+-->
