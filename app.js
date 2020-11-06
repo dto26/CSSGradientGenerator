@@ -31,10 +31,20 @@ app.get("/", function (req, res) {
     startingContent: homeStartingContent,
   });
 });
-
 app.post("/", function (req, res) {
   console.log(req.body.hexcode1);
   console.log(req.body.hexcode2);
+
+  // You can use this in a switch statement
+  // to check which thing we need to generate
+  // and return
+  console.log(req.body.generate);
+
+  // Post requests still expect a response. We
+  // usually send the updated webpage back
+  res.render("home", {
+    startingContent: homeStartingContent
+  })
 })
 
 app.get("/about", function (req, res) {
@@ -83,7 +93,7 @@ app.get("/contact", function (req, res) {
 // }
 //
 // // Set a variable value
-function setValue() {
+// function setValue() {
   // let hexcode1 = document.getElementById('color1').value;
   // let hexcode2 = document.getElementById('color2').value;
   //
@@ -92,7 +102,7 @@ function setValue() {
   //
   // r.style.setProperty('--color2', hexcode2);
   // console.warn('Color 1: ' + hexcode2);
-}
+// }
 
 // Listen to submit button
 // document.addEventListener('DOMContentLoaded', function () {
